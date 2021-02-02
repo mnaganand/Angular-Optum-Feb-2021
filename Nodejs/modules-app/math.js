@@ -7,5 +7,10 @@ function multiply(x, y){
     return x * y;
 }
 
-exports.add = sum;
-exports.multiply = multiply;
+// exports.add = sum;
+// exports.multiply = multiply;
+
+module.exports = {
+    add: sum,
+    multiply
+}

@@ -16,3 +16,11 @@ console.log(chalk.red.inverse(math));
 console.log("Add", math.add(3, 4));
 console.log("Multiply", math.multiply(3, 4));
 
+
+const mylib = require("./my-lib");
+console.log("mylib main: ", mylib);
+console.log(mylib.getData());
+
+
+
+
