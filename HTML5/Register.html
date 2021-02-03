@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Forms Demo</title>
+<style type="text/css">
+	
+	input:invalid + .errorMessage
+	{
+		visibility: visible;
+	}
+	
+	input:valid + .errorMessage
+	{
+		visibility: hidden;
+	}
+	
+	input:required
+	{
+		border: 1px solid red
+	}
+	
+	input:valid
+	{
+		border: 1px solid blue
+	}
+
+
+</style>
+
+<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="lib/modernizr.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		
+		if (Modernizr.input.autofocus) {
+			
+			//alert("auto focus supported");
+			
+		} else {
+			
+			alert("auto focus not supported");
+			$("#userName").focus();
+		}
+		
+		if (Modernizr.inputtypes.email) {
+			
+			//alert("Email input supported");
+			
+		} else {
+			alert("Email input not supported");
+		}
+		
+		$("#userName").blur(function() {
+			
+			document.getElementById("userName").checkValidity();
+			
+		});
+		
+		document.getElementById("userName").oninvalid = function(event) {
+			
+			var sourceElement = event.srcElement;
+			var validity = sourceElement.validity;
+			
+			if(!validity.valid)
+				{
+					if(validity.valueMissing)
+						{
+							$("#userNameMessage").text("The username is required");
+						}
+					else if(validity.patternMismatch)
+						{
+							$("#userNameMessage").text("The username is pattern is incorrect");
+						}
+				}
+		}
+		
+	});
+
+
+</script>
+
+
+</head>
+<body>
+
+	<section>
+		<h3>Register</h3>
+	
+		<article>
+			
+			<form method="post">
+				
+				<p>
+					<label for="userName">UserName</label>
+				</p>
+				<p>
+					<input type="text" id="userName" 
+									name="userName" 
+									autofocus="autofocus"
+									required="required"
+									pattern="[a-zA-Z]{3,8}">
+					<span class="errorMessage" id="userNameMessage">
+						The value is invalid
+					</span>			
+				</p>
+			
+				<p>
+					<label for="userEmail">Email</label>
+				</p>
+				<p>
+					<input type="email" 
+						id="userEmail" 
+						name="userEmail" 
+						placeholder="Enter an email"
+						required>
+					<span class="errorMessage">
+						The value is invalid
+					</span>	
+				</p>
+			
+				<p>
+					<label for="userWebsite">Web Site</label>
+				</p>
+				<p>
+					<input type="url" id="userWebSite" 
+									name="userWebSite"
+									placeholder="Enter a url"
+									list="urlSuggestions">
+									
+					<datalist id="urlSuggestions">
+						<option label="Oracle" 
+								value="http://www.oracle.com"></option>
+						<option label="Google" 
+								value="http://www.google.com"></option>
+						<option label="Apple" 
+								value="http://www.apple.com"></option>
+					</datalist>
+				</p>
+			
+				<p>
+					<label for="userDOB">Date of Birth</label>
+				</p>
+				<p>
+					<input type="date" id="userDOB" name="userDOB">
+				</p>
+			
+				<p>
+					<label for="userColor">Preffered Color</label>
+				</p>
+				<p>
+					<input type="color" id="userColor">
+				</p>
+				
+				<p>
+					<label for="userExp">Experience</label>
+				</p>
+				<p>
+				  0	<input type="range" 
+						id="userExp" min="1" max="25" step="1"> 25
+				</p>
+				
+				<p>
+				
+				<p>
+				
+				
+					<input type="submit" value="Register">
+				</p>
+			</form>
+		
+		
+		</article>
+	
+	</section>
+
+</body>
+</html>

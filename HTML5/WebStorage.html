@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Web Storage</title>
+
+<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="lib/modernizr.js"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		
+		var tasks = window.localStorage.getItem("tasks");
+		$("#tasksDiv").html(tasks);
+		
+		var backColor = window.sessionStorage.getItem("backColor");
+		$("#tasksDiv").css("background-color", backColor);
+		
+		$("#saveBt").click(function() {
+		
+			if(window.localStorage)
+				{
+					var localStorage = window.localStorage;
+					localStorage.setItem("tasks", 
+								$("#tasksDiv").html());	
+				
+					alert("Tasks saved.");
+				}
+			else
+				{
+					alert("Not suppported..");
+				}
+			
+		});
+		
+		$("#saveColorBt").click(function() {
+			
+			window.sessionStorage.setItem("backColor", 
+												$("#colorTB").val());
+			$("#tasksDiv").css("background-color", $("#colorTB").val());
+		})
+		
+		
+		window.addEventListener("storage", function(e) {
+			
+			alert("Value changed for " + e.key + 
+					" from " + e.oldValue +
+					"to " + e.newValue);
+			
+		}, false);
+		
+	});
+
+</script>
+
+</head>
+<body>
+
+	<p>Tasks</p>
+	<div id="tasksDiv" style="height: 300px; width: 300px;border: 1px solid;" 
+				contenteditable="true">
+		
+	</div>
+	
+	<input type="button" id="saveBt" value="Save Task">
+	
+	<p>
+		Choose the back color
+	</p>
+	<p>
+		<input type="color" id="colorTB">
+	</p>
+	<p>
+		<input type="button" id="saveColorBt" value="Save Color">
+	</p>
+	
+
+</body>
+</html>
+
+

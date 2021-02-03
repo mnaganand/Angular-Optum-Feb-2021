@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="lib/modernizr.js"></script>
+
+
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		$("#startBt").click(function() {
+			
+			var worker = new Worker("task.js");
+			
+			worker.postMessage("callCalculate");
+			worker.postMessage("test");
+			
+			worker.onmessage = function(e) {
+				
+				alert(e.data);
+			}
+			
+			worker.onerror = function(e) {
+				alert("Error: " + e.message);
+			}
+			
+		});
+		
+	});
+	
+	
+
+</script>
+</head>
+<body>
+	<h2>Web Workers</h2>
+	<div>
+		
+		<p>
+			Enter Message: <input id="messageTxt" type="text"> 
+		</p>
+	
+		<p>
+			<input id="startBt" type="button" value="Start Worker">
+ 
+		</p>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="lib/modernizr.js"></script>
+<script type="text/javascript">
+
+	var webSocket;
+	$(document).ready(function() {
+		
+		$("#connectBt").click(function() {
+			
+			webSocket = new WebSocket($("#urlTB").val());
+			webSocket.onopen = onOpen;
+			webSocket.onerror = onError;
+			webSocket.onmessage = onMessage;
+		});
+		
+		$("#sendBt").click(function() {
+			
+			var message = $("#msgTB").val();
+			webSocket.send(message);
+			$("#msgDiv").append("<p> Sent Message: " + message + "</p>")
+			
+		});
+		
+	});
+	
+	function onOpen(e) {
+		
+		$("#msgDiv").append("<p> Connected </p>")
+	}
+	function onError(e) {
+		
+		$("#msgDiv").append("<p> Error: " + e.message + "</p>")
+	}
+	function onMessage(e) {
+		
+		$("#msgDiv").append("<p> Message: " + e.data + "</p>")
+	}
+	
+
+</script>
+</head>
+<body>
+	
+	<h2>Web Sockets Sample</h2>
+	
+	<div>
+		
+		<p> 
+			Enter the server address: 
+				<input type="url" id="urlTB" 
+					value="ws://localhost:9999?id=" 
+					style="width: 250px">
+		</p>
+		<p>
+			<input type="button" id="connectBt" value="Connect"> 
+		</p>
+		
+		<p>
+			Enter the message: 
+				<input type="text" id="msgTB"  
+					style="width: 300px">
+		</p>
+		<p>
+			<input type="button" id="sendBt" value="Send"> 
+		</p>
+		<div id="msgDiv">
+			
+		</div>
+		
+		
+	</div>
+	
+</body>
+</html>

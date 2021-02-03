@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Geolocations</title>
+<script type="text/javascript" src="jquery-1.8.2.js"></script>
+<script type="text/javascript" src="modernizr.js"></script>
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		if(window.navigator.geolocation)
+			{
+				$("#message").html("Geolocation supported");
+				
+				var options = {
+						enableHighAccuracy: true,
+						maximumAge: 0,
+						timeout: 10000
+				};
+				
+				var geo =  window.navigator.geolocation;
+				geo.getCurrentPosition(onComplete, onError, options);
+				
+			}
+		else
+			{
+				$("#message").html("Geolocation not supported");
+			}
+		
+	});
+	
+	function onError(error)
+	{
+		$("#message").append("Error getting positions");
+	}
+
+	function onComplete(position)
+	{
+		var posDiv = $("#positionDetails");
+		
+		posDiv.append("<p> Latitude: " 
+					+ position.coords.latitude + "</p>")
+		posDiv.append("<p> Longitude: " 
+					+ position.coords.longitude + "</p>")
+		posDiv.append("<p> Altitude: " 
+					+ position.coords.altitude + "</p>")
+		posDiv.append("<p> Accuracy: " 
+					+ position.coords.accuracy + "</p>")
+		posDiv.append("<p> Timestamp: " 
+					+ position.timestamp + "</p>")	
+					
+		createMap(position.coords.latitude, 
+						position.coords.longitude);
+	}
+	
+	function createMap(latitude, longitude)
+	{
+		var latlng = new google.maps.LatLng(latitude, longitude);
+		var options = {
+				
+				zoom: 15,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var googleMap = new google.maps.Map(
+				document.getElementById("map"),
+				options
+			);
+	}
+	
+</script>
+
+
+</head>
+<body>
+	
+	<h2>Geolocation</h2>
+	
+	<span id="message"></span>
+	
+	<div id="positionDetails">
+		
+	</div>
+	
+	<div id="map" style="height: 400px; width: 500px">
+		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+

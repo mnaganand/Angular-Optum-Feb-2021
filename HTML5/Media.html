@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Media Demos</title>
+<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="lib/modernizr.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+	
+		var video =  document.getElementById("myVideo");
+		
+		$("#playPauseBt").click(function() {
+			
+
+			if(video.paused || video.ended)
+				{
+					video.play();
+					$("#playPauseBt").val("Pause");
+				}
+			else
+				{
+					video.pause();
+					$("#playPauseBt").val("Play");
+				}
+			
+		});
+		
+		$("#stopBt").click(function() {
+			
+			video.pause();
+			video.currentTime = 0;
+			$("#playPauseBt").val("Play");
+			
+		});
+		
+	});
+	
+
+
+</script>
+
+</head>
+
+
+<body>
+	
+	<h2>Media Demo</h2>
+	
+	<div>
+		<p>Audio</p>
+		
+		<audio src="Media/Kalimba.mp3" controls="controls">
+			<span>No audio support</span>
+		</audio>
+
+	</div>
+	
+	<div>
+		<p>Video #1</p>
+		<video style="width: 400px; height: 400px" controls="controls" >
+			<source src="Media/Clip_480_5sec_6mbps_h264.mp4"></source>
+		
+			<span>No Video Support</span>
+		</video>
+	</div>
+	
+	
+	<div>
+		<p>Video #2</p>
+		<video id="myVideo" style="width: 400px; height: 400px">
+			<source src="Media/Clip_480_5sec_6mbps_h264.mp4"></source>
+		
+			<span>No Video Support</span>
+		</video>
+		<div>
+			<input type="button" value="Play" id="playPauseBt">
+			<input type="button" value="Stop" id="stopBt">
+		</div>
+	</div>
+</body>
+</html>
+
+
+
