@@ -1,4 +1,4 @@
-class Employee {
+export class Employee {
     constructor(id, name, salary) {
         this.id = id;
         this.name = name;
@@ -11,9 +11,3 @@ class Employee {
         this._location = value;
     }
 }
-const emp = new Employee(1, "Anil", 50000);
-emp.location = "Mumbai";
-console.log("Id: ", emp.id);
-console.log("Name: ", emp.name);
-console.log("Salary: ", emp.salary);
-console.log("Location: ", emp.location);
