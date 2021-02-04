@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index</title>
+
+    <style type="text/css">
+
+        h4{
+            text-align: center;
+        }
+        header > nav > ul{
+
+            text-align: right;
+        }
+        header > nav li{
+
+            display: inline;
+        }
+        html{
+            font-family: 'Comic Sans MS';
+        }
+        article > section > header{
+            
+            text-align: center;
+            border: 1px solid blue;
+            min-height: 20px;
+            border-radius: 3px;
+            background-color: gray;
+        }
+
+        article > section > article{
+            
+            border: 1px solid blue;
+            min-height: 60px;
+            border-radius: 7px;
+            /*background-color: lightgray;*/
+            /* background: linear-gradient(left, blue, black);  */
+            background: -webkit-linear-gradient(left, rgb(212, 212, 221), rgb(60, 75, 90));
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+        article > section > article:hover {
+
+            background: -webkit-linear-gradient(left, rgb(114, 114, 216), rgb(21, 21, 83));
+        }
+
+
+
+
+
+    </style>
+   
+    <script src="lib/modernizr.js"></script>
+    <script type="text/javascript">
+        if (Modernizr.canvas) {
+            console.log("Canvas supported");
+        } else {
+            console.log("Canvas not supported");
+        }
+
+        if (Modernizr.geolocation) {
+            console.log("geolocation supported");
+        } else {
+            console.log("geolocation not supported");
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <h4>HTML5 Application</h4>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#forms">Forms</a>
+                </li>
+                <li>
+                    <a href="#storage">Storage</a>
+                </li>
+                <li>
+                    <a href="#workers">Workers</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <section>
+            <header>
+                Introduction
+            </header>
+            <article>
+                <p>This is an <mark>HTML5</mark> Application</p>
+                <details>
+                    <summary>Topics Covered</summary>
+                    <ol>
+                        <li>Forms</li>
+                        <li>Web Storage</li>
+                        <li>Workers</li>
+                    </ol>
+                </details>
+            </article>
+        </section>
+        <section>
+            <header>
+                Examples
+            </header>
+            <article>
+                <div>Progress</div>
+                <progress value="40" max="100">
+                    <p>Not supported</p>
+                </progress>
+
+                <div>Canvas</div>
+                <canvas style="height: 100px; width:300px; background-color:gray">
+                    <p>Not supported</p>
+                </canvas>
+                <aside>
+                    Details
+                </aside>
+            </article>
+        </section>
+    </article>
+    <footer>
+        All rights reserved. &copy; Training Department 2016
+    </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+JS 	-- Browser
+	-- Node.js
+
+
+JS ===> global Object ==> Node.js ===> global
+JS ===> global Object ==> Browser ===> window
+
+Scopes
+    JS(ES5) Scopes
+        1. Global
+        2. Function
+
+    JS(ES6) Scopes
+        1. Global
+        2. Function
+        3. Block
+
+    Node.js
+        1.Global
+        2.Function
+        3.Module
+
+Node Application
+    -- Folder
+            -- package.json   ===> npm init(command)
+
+
+Package Managers
+    npm, yarn, bower
+
+
+
+Application
+    package.json ---> list depenedencies 
+                    ---> npm install 
+
+Types of Node Applications
+
+    1.Server-side(Web, REST API, Microservices)
+    2.Tools - Compilers, CLI 
+
+
+Type Coercion
+
+    var x = 10; //number
+    var y = "10" // string
+
+    // x == y ===> true    !=
+    // x === y ===> false  !==
+
+
+JavaScript(Challenges)
+
+    1. Browser Inconsistency
+    2. Global variables
+    3. Namespaces /Packages/ Modules
+    4. OO Programming
+
+Overcome
+
+    1. Design Patterns
+    2. Libraries
+    3. ES 6/ ES 7
+    4. Languages: TypeScript/CoffeeScript/Dart --> Compiles to JS
+
+
+
+TypeScript
+    Scopes(JS)
+        Global
+        Function
+        Block (ES6)  
+        Module 
+    Hoisting(JS) ==> All declartions are pulled to the top of the scope => var
+
+    let & const ==> create a block scope & no hoisting
+
+Arrow Function -- no implicit args
+                -- uses the lexical scoping for "this" & "arguments"
+
+
+
+
+

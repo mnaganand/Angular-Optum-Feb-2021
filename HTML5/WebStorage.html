@@ -5,15 +5,25 @@
 <title>Web Storage</title>
 
 <script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="lib/modernizr.js"></script>
+
 
 <script type="text/javascript">
 	
 	$(document).ready(function() {
 		
 		
-		var tasks = window.localStorage.getItem("tasks");
-		$("#tasksDiv").html(tasks);
+		let tasks;
+		var json = window.localStorage.getItem("tasks");
+		if(json === null){
+			tasks = []
+		}
+		else{
+			tasks = JSON.parse(json);
+		}
+		for (const item of tasks) {
+			$("#tasksDiv").append("<p>" + item + "</p>");
+		}
+		
 		
 		var backColor = window.sessionStorage.getItem("backColor");
 		$("#tasksDiv").css("background-color", backColor);
@@ -23,8 +33,13 @@
 			if(window.localStorage)
 				{
 					var localStorage = window.localStorage;
-					localStorage.setItem("tasks", 
-								$("#tasksDiv").html());	
+					//var json = window.localStorage.getItem("tasks");
+					//const tasks = JSON.parse(tasks);
+					const task = $("#tasksTB").val();
+					tasks.push(task);
+					localStorage.setItem("tasks", JSON.stringify(tasks));	
+					$("#tasksDiv").append("<p>" + task + "</p>");
+					$("#tasksTB").val('');
 				
 					alert("Tasks saved.");
 				}
@@ -43,13 +58,7 @@
 		})
 		
 		
-		window.addEventListener("storage", function(e) {
-			
-			alert("Value changed for " + e.key + 
-					" from " + e.oldValue +
-					"to " + e.newValue);
-			
-		}, false);
+		
 		
 	});
 
@@ -57,14 +66,18 @@
 
 </head>
 <body>
+	<h2>Web Storage</h2>
+	<div>
+		<input id="tasksTB" type="text" placeholder="Task Name"/>&nbsp;
+		<input type="button" id="saveBt" value="Save Task">
 
+	</div>
 	<p>Tasks</p>
-	<div id="tasksDiv" style="height: 300px; width: 300px;border: 1px solid;" 
-				contenteditable="true">
+	<div id="tasksDiv" style="height: 300px; width: 300px;border: 1px solid;">
 		
 	</div>
 	
-	<input type="button" id="saveBt" value="Save Task">
+	
 	
 	<p>
 		Choose the back color

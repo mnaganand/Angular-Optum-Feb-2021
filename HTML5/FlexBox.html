@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>FlexBox</title>
+	<style type="text/css">
+		.container {
+			margin: 5px;
+			padding: 5px;
+			width: 100%;
+			height: 100%;
+
+			/* display: flex;
+			flex-flow: row wrap;
+			justify-content: center; */
+		}
+
+		div>div {
+
+			height: 150px;
+			width: 150px;
+			background-color: brown;
+			text-align: center;
+			font-size: xx-large;
+			color: yellow;
+			margin: 5px;
+		}
+	</style>
+	<script src="lib/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+
+		var count = 0;
+		var handle;
+		// $(document).ready(function () {
+
+		// 	handle = setInterval(appendContent, 1000);
+
+		// });
+
+		function appendContent() {
+
+			var element = $("<div>" + ++count + "</div>");
+
+			$(".container").append(element);
+			if (count == 25) {
+				clearInterval(handle);
+			}
+		}
+
+	</script>
+</head>
+
+
+<body>
+	<h2>Flex Box</h2>
+
+	<div class="container">
+
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+		<div>8</div>
+		<div>9</div>
+
+	</div>
+
+
+</body>
+
+</html>

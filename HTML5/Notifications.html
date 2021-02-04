@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="lib/modernizr.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-		$("#show").click(function(){
-			
-			if(window.webkitNotifications)
-				{
-					if(window.webkitNotifications.checkPermission() == 0)
-						{
-							var notification = 
-								window.webkitNotifications
-										.createNotification(
-												"",
-												"Title",
-												"Hello World Notifications");
-							notification.show();
-						}
-					else
-						{
-							window.webkitNotifications.requestPermission();
-						}
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<script type="text/javascript" src="lib/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="lib/modernizr.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$("#show").click(function () {
+
+				if (window.Notification) {
+					if (window.Notification.permission === "granted") {
+						//var img = '/to-do-notifications/img/icon-128.png';
+						var text = 'Hey. Check this out!!.';
+						var notification = new Notification('Sample Notification', { body: text });
+					}
+					else {
+						window.Notification.requestPermission();
+					}
 				}
-			else
-				{
+				else {
 					alert("no support");
 				}
-			
+
+			});
+
 		});
-		
-	});
-</script>
+	</script>
 </head>
+
 <body>
 	<div>
 		<input type="button" value="Show" id="show">
 	</div>
 </body>
+
 </html>

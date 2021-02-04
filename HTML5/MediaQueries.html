@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Media</title>
+    <style>
+
+        .wrapper{
+            
+            border: 1px solid blue;
+            min-height: 100px;
+            margin: 10px;
+        }
+        div > p {
+            visibility: hidden;
+        }
+
+        @media screen and (max-width: 600px){
+
+            .one{
+                background-color: blue;
+            }
+            .one > p{
+                visibility: visible;
+            }
+        }
+
+        @media screen and (min-width: 600px) and (max-width:900px){
+
+            .two{
+                background-color: red;
+            }
+            .two > p{
+                visibility: visible;
+            }
+        }
+
+        @media screen and (min-width: 900px){
+
+            .three{
+                background-color: yellow;
+            }
+            .three > p{
+                visibility: visible;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h2>Media Queries</h2>
+
+    <div class="wrapper one">
+        <p>
+            This is viewed with min-width: 600px
+        </p>
+    </div>
+    <div class="wrapper two">
+        <p>
+            This is viewed with min-width between: 600px and 900px
+        </p>
+    </div>
+    <div class="wrapper three">
+        <p>
+            This is viewed with min-width above: 900px
+        </p>
+    </div>
+</body>
+</html>

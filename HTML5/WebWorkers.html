@@ -14,20 +14,25 @@
 	$(document).ready(function() {
 		
 		$("#startBt").click(function() {
+
+			for(var i =0; i < 2000000000 ; i++)
+			{
+				result = i;
+			}
 			
-			var worker = new Worker("task.js");
+			// var worker = new Worker("task.js");
 			
-			worker.postMessage("callCalculate");
-			worker.postMessage("test");
+			// worker.postMessage("callCalculate");
+			// worker.postMessage("test");
 			
-			worker.onmessage = function(e) {
+			// worker.onmessage = function(e) {
 				
-				alert(e.data);
-			}
+			// 	alert(e.data);
+			// }
 			
-			worker.onerror = function(e) {
-				alert("Error: " + e.message);
-			}
+			// worker.onerror = function(e) {
+			// 	alert("Error: " + e.message);
+			// }
 			
 		});
 		
